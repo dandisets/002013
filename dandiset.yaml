@@ -23,15 +23,15 @@ assetsSummary:
     name: Neurodata Without Borders (NWB)
     schemaKey: StandardsType
   measurementTechnique:
-  - name: spike sorting technique
-    schemaKey: MeasurementTechniqueType
   - name: surgical technique
-    schemaKey: MeasurementTechniqueType
-  - name: multi electrode extracellular electrophysiology recording technique
     schemaKey: MeasurementTechniqueType
   - name: analytical technique
     schemaKey: MeasurementTechniqueType
-  numberOfBytes: 4689708511
+  - name: multi electrode extracellular electrophysiology recording technique
+    schemaKey: MeasurementTechniqueType
+  - name: spike sorting technique
+    schemaKey: MeasurementTechniqueType
+  numberOfBytes: 4689586447
   numberOfFiles: 3
   numberOfSubjects: 2
   schemaKey: AssetsSummary
@@ -40,10 +40,10 @@ assetsSummary:
     name: Macaca mulatta - Rhesus monkey
     schemaKey: SpeciesType
   variableMeasured:
-  - Units
-  - ElectricalSeries
   - ElectrodeGroup
   - ProcessingModule
+  - ElectricalSeries
+  - Units
 citation: Schwerdt, Helen N.; Amjad, Usamma; Mahajan, Shreya; Choi, Jiwon; Shrivastav,
   Ritesh; Murray, Raymond; Somich, Abby; Coyne, Olivia (2026) Microinvasive Probes
   for Monitoring Electrical and Chemical Neural Activity in Nonhuman Primates (Version
