@@ -47,7 +47,7 @@ assetsSummary:
 citation: Schwerdt, Helen N.; Amjad, Usamma; Mahajan, Shreya; Choi, Jiwon; Shrivastav,
   Ritesh; Murray, Raymond; Somich, Abby; Coyne, Olivia (2026) Microinvasive Probes
   for Monitoring Electrical and Chemical Neural Activity in Nonhuman Primates (Version
-  draft) [Data set]. DANDI Archive. https://dandiarchive.org/dandiset/002013/draft
+  0.261012.0921) [Data set]. DANDI Archive. https://doi.org/10.48324/dandi.002013/0.261012.0921
 contributor:
 - email: hes100@pitt.edu
   identifier: 0000-0002-0389-982X
@@ -138,6 +138,7 @@ contributor:
   - dcite:DataCurator
   schemaKey: Person
 dateCreated: '2026-09-28T15:02:22.017254+00:00'
+datePublished: '2026-10-12T09:21:12.178133+00:00'
 description: This dataset contains chronic neurochemical and electrophysiological
   recordings from the striatum of two adult female rhesus monkeys (Macaca mulatta;
   Monkey P and Monkey T), obtained with shaft-assisted micro-invasive probes (s-µIPs)
@@ -164,8 +165,9 @@ description: This dataset contains chronic neurochemical and electrophysiologica
   decoded from 8-bit Neuralynx event codes. The Neuralynx and FSCV systems were synchronized
   using shared trial-start event codes sent to both systems, and all data are expressed
   relative to the start of the Neuralynx recording.
+doi: 10.48324/dandi.002013/0.261012.0921
 ethicsApproval: []
-id: DANDI:002013/draft
+id: DANDI:002013/0.261012.0921
 identifier: DANDI:002013
 keywords:
 - fast scan cyclic voltammetry
@@ -174,7 +176,7 @@ keywords:
 license:
 - spdx:CC-BY-4.0
 manifestLocation:
-- https://api.dandiarchive.org/api/dandisets/002013/versions/draft/assets/
+- https://dandiarchive.s3.amazonaws.com/dandisets/002013/0.261012.0921/assets.yaml
 name: Microinvasive Probes for Monitoring Electrical and Chemical Neural Activity
   in Nonhuman Primates
 protocol:
@@ -182,6 +184,18 @@ protocol:
 - https://www.protocols.io/view/baseplate-implantation-for-two-part-chamber-system-kqdg32b91v25/v1
 - https://www.protocols.io/view/craniotomy-and-second-and-third-phase-implantation-x54v92wd4l3e/v1
 - https://www.protocols.io/view/chronic-multi-electrode-assembly-implantation-with-bp2l62m95gqe/v1
+publishedBy:
+  endDate: '2026-10-12T09:21:12.178133+00:00'
+  id: urn:uuid:c8fe8938-983a-4716-8c56-e16047fb601c
+  name: DANDI publish
+  schemaKey: PublishActivity
+  startDate: '2026-10-12T09:21:12.178133+00:00'
+  wasAssociatedWith:
+  - id: urn:uuid:17792e6a-78bb-43dc-ad15-dec1598c3603
+    identifier: RRID:SCR_017571
+    name: DANDI API
+    schemaKey: Software
+    version: 0.1.0
 relatedResource:
 - identifier: https://doi.org/10.1021/acschemneuro.5c00071
   name: Microinvasive Probes for Monitoring Electrical and Chemical Neural Activity
@@ -208,6 +222,6 @@ relatedResource:
 repository: https://dandiarchive.org
 schemaKey: Dandiset
 schemaVersion: 0.7.0
-url: https://dandiarchive.org/dandiset/002013/draft
-version: draft
+url: https://dandiarchive.org/dandiset/002013/0.261012.0921
+version: 0.261012.0921
 wasGeneratedBy: []
