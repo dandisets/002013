@@ -47,7 +47,7 @@ assetsSummary:
 citation: Schwerdt, Helen N.; Amjad, Usamma; Mahajan, Shreya; Choi, Jiwon; Shrivastav,
   Ritesh; Murray, Raymond; Somich, Abby; Coyne, Olivia (2026) Microinvasive Probes
   for Monitoring Electrical and Chemical Neural Activity in Nonhuman Primates (Version
-  draft) [Data set]. DANDI Archive. https://dandiarchive.org/dandiset/002013/draft
+  0.261120.1306) [Data set]. DANDI Archive. https://doi.org/10.48324/dandi.002013/0.261120.1306
 contributor:
 - email: hes100@pitt.edu
   identifier: 0000-0002-0389-982X
@@ -138,6 +138,7 @@ contributor:
   - dcite:DataCurator
   schemaKey: Person
 dateCreated: '2026-09-28T15:02:22.017254+00:00'
+datePublished: '2026-11-20T13:06:33.316390+00:00'
 description: This dataset contains chronic neurochemical and electrophysiological
   recordings from the striatum of two adult female rhesus monkeys (Macaca mulatta;
   Monkey P and Monkey T), obtained with shaft-assisted micro-invasive probes (s-µIPs)
@@ -164,8 +165,9 @@ description: This dataset contains chronic neurochemical and electrophysiologica
   decoded from 8-bit Neuralynx event codes. The Neuralynx and FSCV systems were synchronized
   using shared trial-start event codes sent to both systems, and all data are expressed
   relative to the start of the Neuralynx recording.
+doi: 10.48324/dandi.002013/0.261120.1306
 ethicsApproval: []
-id: DANDI:002013/draft
+id: DANDI:002013/0.261120.1306
 identifier: DANDI:002013
 keywords:
 - fast scan cyclic voltammetry
@@ -174,7 +176,7 @@ keywords:
 license:
 - spdx:CC-BY-4.0
 manifestLocation:
-- https://api.dandiarchive.org/api/dandisets/002013/versions/draft/assets/
+- https://dandiarchive.s3.amazonaws.com/dandisets/002013/0.261120.1306/assets.yaml
 name: Microinvasive Probes for Monitoring Electrical and Chemical Neural Activity
   in Nonhuman Primates
 protocol:
@@ -182,6 +184,18 @@ protocol:
 - https://www.protocols.io/view/baseplate-implantation-for-two-part-chamber-system-kqdg32b91v25/v1
 - https://www.protocols.io/view/craniotomy-and-second-and-third-phase-implantation-x54v92wd4l3e/v1
 - https://www.protocols.io/view/chronic-multi-electrode-assembly-implantation-with-bp2l62m95gqe/v1
+publishedBy:
+  endDate: '2026-11-20T13:06:33.316390+00:00'
+  id: urn:uuid:9492d1a7-bf77-4571-b3fb-629533882930
+  name: DANDI publish
+  schemaKey: PublishActivity
+  startDate: '2026-11-20T13:06:33.316390+00:00'
+  wasAssociatedWith:
+  - id: urn:uuid:8f972c24-f291-48c4-8fe5-8d472854b3e8
+    identifier: RRID:SCR_017571
+    name: DANDI API
+    schemaKey: Software
+    version: 0.1.0
 relatedResource:
 - identifier: https://doi.org/10.1021/acschemneuro.5c00071
   name: Microinvasive Probes for Monitoring Electrical and Chemical Neural Activity
@@ -205,9 +219,68 @@ relatedResource:
   resourceType: dcite:Software
   schemaKey: Resource
   url: https://github.com/catalystneuro/schwerdt-lab-to-nwb
+releaseNotes: "## Changes since version 0.261012.0921\n\nThe three session files were
+  re-converted from the lab's source files with the corrected conversion ([catalystneuro/schwerdt-lab-to-nwb](https://github.com/catalystneuro/schwerdt-lab-to-nwb),
+  commits [4d716c5](https://github.com/catalystneuro/schwerdt-lab-to-nwb/commit/4d716c5)
+  and [40752c4](https://github.com/catalystneuro/schwerdt-lab-to-nwb/commit/40752c4)).
+  The conversion fixes problems found by a reproduction attempt ([issue #31](https://github.com/catalystneuro/schwerdt-lab-to-nwb/issues/31),
+  triaged in [issue #32](https://github.com/catalystneuro/schwerdt-lab-to-nwb/issues/32)).
+  The dandiset holds the same sessions under the same file names: Monkey T on 09/13/2024
+  and 09/26/2024, and Monkey P on 08/13/2018.\n\n**Corrections**\n\n- **One clock
+  for every stream (Monkey T).** The raw ephys, the eye tracking and the spike times
+  started at 0 s, while the trials, events, LFP and FSCV were on the session clock
+  (9831 s later in 09/26/2024). They are now all in seconds from the session start,
+  the time the Neuralynx recording was opened (`recording_opened` in the .ncs header).\n
+  - **One clock for every stream (Monkey P).** The spike times were 6800.666 s ahead
+  of the raw signal, which started at 0 s. The Neuralynx records of this session count
+  from the start of the acquisition software, and the raw signal now follows that
+  clock too, so spikes and raw data line up.\n- **Time zone.** The lab's timestamps
+  hold New York wall-clock time stored as if it were UTC. The earlier conversion decoded
+  them in the time zone of the converting machine, which placed the trials, events,
+  LFP and FSCV 2 h late. They are now decoded as UTC, whatever the machine's zone.\n
+  - **Sampling rate.** The raw ephys and eye tracking are written at the rate measured
+  from the .ncs record timestamps, not the nominal rate, which drifted from the spike
+  times by about 4 ms per hour.\n- **Raw FSCV.** The scan times were interpolated
+  against a Neuralynx timestamp, so the whole series sat on a 0.1 s grid from the
+  first trial and could not be matched to the trial-aligned FSCV. Each scan is now
+  placed on the session clock by a line fitted to the lab's pairs of FSCV-clock and
+  Neuralynx times (residual at most one scan, 0.1 s).\n- **Events.** Each event was
+  stored once for every overlapping 60 s trial window, about five times (85,665 stored
+  times for 17,686 events in 09/13/2024), and out of order. Each event is now stored
+  once, in time order. Codes missing from the lab's event map are kept as `TTL code
+  <code>`.\n- **Plexon spikes.** The Plexon units are read with neo 0.14.6, which
+  reads the PLX timestamps as unsigned; earlier versions placed some spikes 4294.967
+  s early and dropped others. Spike times are sorted within each unit, and units are
+  named by their Plexon id (`ch<channel>#<unit>`, unit #0 is the unsorted unit). In
+  Monkey P, unit 0 merged the unsorted and the poor-quality spikes; only the units
+  of channel `csc12_100` are now written, and the 7 thresholded spikes that came before
+  the first raw sample are left out.\n- **Units and scaling.** The bipolar LFP carried
+  the raw conversion factor (3.05e-8) for values already in volts, which read about
+  3e7 times too small; it is now written with a conversion of 1. The raw FSCV current
+  is in nanoamperes with a conversion of 1e-9, so it reads as amperes. The thresholded
+  spike waveforms are converted from microvolts to volts.\n- **Descriptions.** The
+  LFP is no longer called beta-band: it is broadband, and its preprocessing is not
+  documented in the source. The subject and session descriptions describe one monkey
+  each and say which clock the times use. The raw series gives the .ncs filter settings
+  (high cut 8000 Hz in 2024, 7500 Hz for Monkey P). The files cite the published article
+  as well as the preprint.\n\n**Additions**\n\n- **Monkey P events.** Monkey P's file
+  had no events. The strobed event codes of `csc12.plx` are now stored, by code, since
+  no code map exists for that session.\n- **Trial-aligned FSCV** has one row for every
+  trial with data, a `trial_index` column, and the `good` flag as the lab gives it.
+  Its columns say that their units are not known.\n\n**Known gaps**\n\n- The second
+  FSCV site of Figure 3A (c8ds) is not in the dandiset; 09/13/2024 holds c8dg only.\n
+  - The trial-aligned FSCV of 09/13/2024 covers the first 734 of its 1468 trials,
+  as in the lab's source file.\n- Monkey P's 36 event codes have no names, so its
+  trials and reward conditions cannot be identified.\n- The units of the PCA-extracted
+  dopamine, pH and motion components and of the oxidation current are not given in
+  the source, nor the window they are referenced to.\n- The trials tables hold 60
+  s windows around each trial start; trial conditions are only in the events.\n- The
+  implant dates are not given, so the days after implant that the paper reports cannot
+  be checked.\n- Monkey P's site is named cl3 in the files, where the paper names
+  it c33."
 repository: https://dandiarchive.org
 schemaKey: Dandiset
 schemaVersion: 0.7.0
-url: https://dandiarchive.org/dandiset/002013/draft
-version: draft
+url: https://dandiarchive.org/dandiset/002013/0.261120.1306
+version: 0.261120.1306
 wasGeneratedBy: []
